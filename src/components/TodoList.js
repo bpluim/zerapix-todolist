@@ -38,6 +38,8 @@ const TodoList = () => {
     }
 
     const updateTodo = (todoId, newValue) => {
+        if (!newValue.title || /^\s*$/.test(newValue.title)) return
+
         setTodoList(prev => prev.map(todo => (todo.id === todoId ? newValue : todo)))
     }
 
