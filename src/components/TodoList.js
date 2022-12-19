@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
 
-const TodoList = () => {
+const TodoList = ({user}) => {
     const [todoList, setTodoList] = useState([])
 
     useEffect(() => {
@@ -43,9 +43,11 @@ const TodoList = () => {
         setTodoList(prev => prev.map(todo => (todo.id === todoId ? newValue : todo)))
     }
 
+    if (!user) return
+
     return (
         <div>
-            <h1>What's the plan for today?</h1>
+            <h1>What's the plan for today {user.given_name}?</h1>
             <TodoForm onSubmit={addTodo} />
             <Todo
                 todos={todoList}
