@@ -30,8 +30,10 @@ function App() {
 
   return (
     <div className="todo-app">
-      <div id="signInDiv" />
-      <TodoList user={user}/>
+      <div style={{display: 'flex', justifyContent: 'space-around', margin: '10px 0', flexFlow: 'column nowrap', alignItems: 'center'}}>
+        {!user ? <div id="signInDiv" /> : ''}
+        <TodoList user={user}/>
+      </div>
     </div>
   );
 }
